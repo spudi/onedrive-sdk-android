@@ -63,11 +63,14 @@ task checkstyle(type: Checkstyle) {
 }
 
 dependencies {
+    implementation 'com.android.support:appcompat-v7:26.1.0'
     compile ('com.microsoft.services.msa:msa-auth:0.8.4') {
         exclude module: 'com.microsoft.services.msa'
+        exclude group: 'com.android.support'
     }
     compile ('com.microsoft.aad:adal:1.1.7') {
         exclude module: 'com.microsoft.aad'
+        exclude group: 'com.android.support'
     }
     compile ('com.google.code.gson:gson:2.3.1') {
         exclude module: 'com.google.code.gson'

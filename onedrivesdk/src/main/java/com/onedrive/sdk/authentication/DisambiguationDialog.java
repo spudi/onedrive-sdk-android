@@ -22,9 +22,6 @@
 
 package com.onedrive.sdk.authentication;
 
-import com.onedrive.sdk.core.OneDriveErrorCodes;
-import com.onedrive.sdk.logger.ILogger;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -36,6 +33,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+
+import com.onedrive.sdk.core.OneDriveErrorCodes;
+import com.onedrive.sdk.logger.ILogger;
 
 /**
  * A dialog that hosts a the disambiguation flow.

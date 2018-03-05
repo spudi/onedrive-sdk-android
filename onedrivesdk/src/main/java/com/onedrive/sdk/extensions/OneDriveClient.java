@@ -22,16 +22,21 @@
 
 package com.onedrive.sdk.extensions;
 
-import com.onedrive.sdk.concurrency.*;
-import com.onedrive.sdk.core.*;
-import com.onedrive.sdk.http.*;
-import com.onedrive.sdk.generated.*;
-import com.onedrive.sdk.serializer.*;
-
-import com.onedrive.sdk.authentication.*;
-import com.onedrive.sdk.logger.*;
 import android.app.Activity;
 import android.content.Context;
+
+import com.onedrive.sdk.authentication.ClientAuthenticatorException;
+import com.onedrive.sdk.authentication.IAccountInfo;
+import com.onedrive.sdk.authentication.IAuthenticator;
+import com.onedrive.sdk.concurrency.ICallback;
+import com.onedrive.sdk.concurrency.IExecutors;
+import com.onedrive.sdk.core.ClientException;
+import com.onedrive.sdk.core.IClientConfig;
+import com.onedrive.sdk.core.OneDriveErrorCodes;
+import com.onedrive.sdk.generated.BaseOneDriveClient;
+import com.onedrive.sdk.http.IHttpProvider;
+import com.onedrive.sdk.logger.ILogger;
+import com.onedrive.sdk.serializer.ISerializer;
 
 // This file is available for extending, afterwards please submit a pull request.
 
@@ -175,7 +180,7 @@ public class OneDriveClient extends BaseOneDriveClient implements IOneDriveClien
          * @param activity The activity the UI should be from
          * @throws ClientException if there was an exception creating the client
          */
-        private IOneDriveClient loginAndBuildClient(final Activity activity) throws ClientException {
+        public IOneDriveClient loginAndBuildClient(final Activity activity) throws ClientException {
             mClient.validate();
 
             mClient.getAuthenticator()
@@ -201,7 +206,7 @@ public class OneDriveClient extends BaseOneDriveClient implements IOneDriveClien
          * @param context The context to initialize components with.
          * @throws ClientException if there was an exception creating the client
          */
-        private IOneDriveClient loginSilentAndBuildClient(final Context context) throws ClientException {
+        public IOneDriveClient loginSilentAndBuildClient(final Context context) throws ClientException {
             mClient.validate();
 
             mClient.getAuthenticator()
