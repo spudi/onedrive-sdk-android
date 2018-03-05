@@ -1,1 +1,1 @@
-include ':onedrivesdk'
+include ':onedrivesdk', ':sample'

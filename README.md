@@ -52,7 +52,10 @@ final MSAAuthenticator msaAuthenticator = new MSAAuthenticator() {
 
     @Override
     public String[] getScopes() {
-        return new String[] { "onedrive.appfolder" };
+        return new String[]{
+                "offline_access", // use this scope to enable silent login
+                "onedrive.appfolder"
+        };
     }
 }
 
@@ -78,7 +81,7 @@ final IClientConfig oneDriveConfig = DefaultClientConfig.createWithAuthenticator
                                             msaAuthenticator,
                                             adalAuthenticator);
                                             
-final DefaultCallback<IOneDriveClient> callback = new DefaultCallback<IOneDriveClient>(activity) {
+final ICallback<IOneDriveClient> callback = new ICallback<IOneDriveClient>() {
             @Override
             public void success(final IOneDriveClient result) {
                 // OneDrive client created successfully.
@@ -89,10 +92,9 @@ final DefaultCallback<IOneDriveClient> callback = new DefaultCallback<IOneDriveC
                 // Exception happened during creation.
             }
         };
-        
-final IOneDriveClient oneDriveClient = new OneDriveClient.Builder()
-                                            .fromConfig(oneDriveConfig)
-                                            .loginAndBuildClient(getActivity(), callback);
+new OneDriveClient.Builder()
+        .fromConfig(oneDriveConfig)
+        .loginAndBuildClient(this, callback);
 
 ```
 
